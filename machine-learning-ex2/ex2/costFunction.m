@@ -21,10 +21,10 @@ grad = zeros(size(theta));
 %
 
 
+predictions = sigmoid(X * theta); %h predictions matrix  100x1  (100x3 x 3x1) [h0,h1,h2]
+J = 1/m * sum((-y).*log(predictions)-((1-y).*(log(1-predictions)))); % cost real number elementwise * 100x1 * 100x1
 
-
-
-
+grad = 1/m * X'*(predictions.-y); %gradients X' = 3x100  (each row = a feature) * 100x1 = 3x1  matrix * = sum of mat1_row(i)*mat2_col(i)
 
 
 % =============================================================

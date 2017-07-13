@@ -17,6 +17,16 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+thetaSet = [0; theta(2:size(theta),:)];
+regularizationParam = lambda/(2*m) * sum(thetaSet.^2);
+predictions = sigmoid(X * theta); 
+%h predictions matrix  100x1  (100x3 x 3x1) [h0,h1,h2]
+J = 1/m * sum((-y).*log(predictions)-((1-y).*(log(1-predictions)))) + regularizationParam; 
+% cost real number elementwise * 100x1 * 100x1
+
+grad = 1/m * X'*(predictions.-y)+lambda*thetaSet/m;
+
+%gradients X' = 3x100  (each row = a feature) * 100x1 = 3x1  matrix * = sum of mat1_row(i)*mat2_col(i)
 
 
 

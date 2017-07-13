@@ -12,8 +12,12 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+yeses = find(y==1);
+noes = find(y==0);
 
+plot(X(yeses, 1), X(yeses, 2), 'kd', 'MarkerFaceColor', 'g', 'MarkerSize', 7);
 
+plot(X(noes, 1), X(noes, 2), 'ko', 'MarkerFaceColor', 'r', 'MarkerSize', 7);
 
 
 
