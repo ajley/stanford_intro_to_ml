@@ -5,7 +5,7 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
 %   gradient of the cost w.r.t. to the parameters. 
 
 % Initialize some useful values
-m = length(y); % number of training examples
+  m = length(y); % number of training example
 
 % You need to return the following variables correctly 
 J = 0;
@@ -17,7 +17,7 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
-thetaSet = [0; theta(2:size(theta),:)];
+thetaSet = [0; theta(2:size(theta),:)]; % ignore theta0 for regularization
 regularizationParam = lambda/(2*m) * sum(thetaSet.^2);
 predictions = sigmoid(X * theta); 
 %h predictions matrix  100x1  (100x3 x 3x1) [h0,h1,h2]
@@ -35,3 +35,4 @@ grad = 1/m * X'*(predictions.-y)+lambda*thetaSet/m;
 % =============================================================
 
 end
+  
