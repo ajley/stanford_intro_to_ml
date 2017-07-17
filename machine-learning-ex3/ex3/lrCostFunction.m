@@ -36,7 +36,15 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+alttheta = [0;theta(2:size(theta),:)]; %Make theta0 0 for regularization
 
+regularizationParams = lambda/(2*m) * sum(alttheta.^2);
+
+predictions = sigmoid(X*theta);
+
+J = 1/m * sum((-y.*log(predictions))-((1-y).*log(1-predictions))) + regularizationParams;
+
+grad = 1/m * X'*(predictions.-y)+lambda*alttheta/m;
 
 
 

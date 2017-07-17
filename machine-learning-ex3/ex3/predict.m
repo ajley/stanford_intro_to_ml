@@ -21,9 +21,12 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+X = [ones(m,1) X]; %adding in x0
+a = sigmoid(X * Theta1'); % mxn x (axn)' = mxa vector
+a = [ones(m,1) a]; % adding a0
+h = sigmoid(a * Theta2');
 
-
-
+[prob p] = max(h, [], 2);
 
 
 

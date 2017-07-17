@@ -30,8 +30,8 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
-
+all_predictions = X *all_theta'; % this is m*n  * n*k = m * k = rows of probabilities
+[prob p] = max(all_predictions,[],2);
 
 
 
