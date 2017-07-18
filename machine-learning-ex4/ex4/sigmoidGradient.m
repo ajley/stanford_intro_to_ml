@@ -13,6 +13,12 @@ g = zeros(size(z));
 %               each value of z (z can be a matrix, vector or scalar).
 
 
+%sigmoidgrad = g(z)(1-g(z))
+%g(z) = sigmoid()
+
+g = sigmoid(z).*(1-sigmoid(z));
+
+
 
 
 
