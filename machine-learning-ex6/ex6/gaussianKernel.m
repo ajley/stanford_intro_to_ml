@@ -16,7 +16,9 @@ sim = 0;
 %
 %
 
-
+diff = x1.-x2;
+sumdiff = sum(diff.^2);
+sim = exp(-(sumdiff/(2*sigma^2)));
 
 
 
