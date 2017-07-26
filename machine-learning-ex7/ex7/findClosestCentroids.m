@@ -21,7 +21,17 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i = 1:size(X,1)
+  nearest = inf;
+  for k = 1:K
+    diff = X(i,:) - centroids(k,:);
+    sqdiff = sum(diff.^2);
+    if sqdiff < nearest;
+      idx(i) = k;
+      nearest = sqdiff;
+    endif
+  endfor
+endfor
 
 
 

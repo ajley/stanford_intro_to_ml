@@ -27,7 +27,16 @@ centroids = zeros(K, n);
 %
 
 
-
+for k = 1:size(centroids,1)
+  sum = [];
+  for i = 1:size(idx,1)
+    if idx(i) == k
+      sum = [sum ; X(i,:)];
+    endif
+  if size(sum,1) > 0
+    centroids(k,:) = mean(sum);
+  endif
+endfor
 
 
 

@@ -21,6 +21,8 @@ S = zeros(n);
 %
 
 
+covar = 1/m * X'*X;
+[U, S, V] = svd(covar);
 
 
 

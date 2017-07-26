@@ -22,6 +22,13 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               
 
 
+% Z = mxK
+%X_rec needs to be mxn again - use U to approximate back.  U = nXn
+%make U_reduce = nxK
+U_reduce = U(:,1:K);
+
+
+X_rec = Z * U_reduce';
 
 % =============================================================
 
