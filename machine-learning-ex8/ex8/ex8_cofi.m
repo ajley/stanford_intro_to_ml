@@ -144,6 +144,15 @@ my_ratings(69) = 5;
 my_ratings(183) = 4;
 my_ratings(226) = 5;
 my_ratings(355)= 5;
+my_ratings(28) = 5;
+my_ratings(38) = 5;
+my_ratings(44) = 3;
+my_ratings(50) = 4;
+my_ratings(53) = 4;
+my_ratings(54) = 4;
+my_ratings(55) = 5;
+my_ratings(56) = 5;
+
 
 fprintf('\n\nNew user ratings:\n');
 for i = 1:length(my_ratings)

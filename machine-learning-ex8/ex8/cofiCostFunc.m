@@ -40,16 +40,39 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+%J = 1/2 * sum (theta'*x -y) ^2   - cost function determination
+%X = movies x features
+%Theta = users x features
+
+%calculate the errors
+error = X*Theta' .- Y;
+%now get rid of non-reviews
+error = R.*error;
+
+J = 1/2 * sum(sum(error.^2)); 
+
+%now calculate the gradients
+%error = movies x users
+
+%X_grad should be movies X features
+%Theta_grad should be users * features
 
 
+X_grad = error*Theta;
+
+Theta_grad = error'*X;
 
 
+%now add in regularization to J
+theta_reg = lambda/2 * sum(sum(Theta.^2));
+x_reg = lambda/2 * sum(sum(X.^2));
 
+J = J + theta_reg + x_reg;
 
+% now regularization to gradients
 
-
-
-
+X_grad = X_grad + lambda .* X;
+Theta_grad = Theta_grad + lambda .* Theta; 
 
 
 

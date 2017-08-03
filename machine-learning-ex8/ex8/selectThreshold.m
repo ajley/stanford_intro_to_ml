@@ -12,7 +12,21 @@ F1 = 0;
 
 stepsize = (max(pval) - min(pval)) / 1000;
 for epsilon = min(pval):stepsize:max(pval)
-    
+  
+  %F1 = 2 x precision x recal / (precision + recall)
+  %precision =tp/(tp+fp)
+  %recall = tp/(tp+fn)
+  tp = sum((yval == 1) & (pval < epsilon));
+  fp = sum((yval == 0) & (pval < epsilon));
+  fn = sum((yval == 1) & (pval >= epsilon));
+  precision = tp/(tp+fp);
+  recall = tp/(tp+fn);
+  F1 = 2*precision*recall/(precision+recall);
+  if F1 > bestF1
+    bestF1 = F1;
+    bestEpsilon = epsilon;
+  endif
+endfor
     % ====================== YOUR CODE HERE ======================
     % Instructions: Compute the F1 score of choosing epsilon as the
     %               threshold and place the value in F1. The code at the
@@ -37,10 +51,6 @@ for epsilon = min(pval):stepsize:max(pval)
 
     % =============================================================
 
-    if F1 > bestF1
-       bestF1 = F1;
-       bestEpsilon = epsilon;
-    end
-end
+
 
 end

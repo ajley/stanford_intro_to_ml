@@ -22,8 +22,11 @@ sigma2 = zeros(n, 1);
 %
 
 
+% colum sum on X - gives mu per feature
+mu = 1/m * sum(X)';
 
-
+%transpose X to get nxm - subtract mu elementwise which is nx1 for each value in row n
+sigma2 = 1/m * sum((X'.-mu).^2,2);
 
 
 
